@@ -14,7 +14,13 @@ class CreateWorksTable extends Migration
     public function up()
     {
         Schema::create('works', function (Blueprint $table) {
+            /* --date released (if finished)
+            --date started(for ongoing)
+            --date kung kailan na scrap (for unfinished)
+            --tags */
             $table->increments('id');
+            $table->string('study'); // Name of study
+            $table->string('author'); // Name of author
             $table->timestamps();
         });
     }
