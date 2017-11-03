@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function index() {
-        $title = 'Welcome to TedHouse Works';
+        $title = 'Welcome to T3D Workhouse';
         // return view('pages.index', compact('title'));
         return view('menu.index') -> with('title', $title);
     }
