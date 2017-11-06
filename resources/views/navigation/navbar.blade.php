@@ -1,18 +1,9 @@
-<nav class="navbar navbar-inverse">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">{{ config('app.name', 'LSAPP') }}</a>
-    </div>
-
-    <div id="navbar" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav">
-            <li><a class="nav-link disabled" href="/">Home</a></li>
-            <li><a href="/about">About us</a></li>
-        </ul>
-    </div>
-</nav>
+<!-- NAVIGATION BAR -->
+<div id="navigation">
+    <a href="" id="logo">TE<sup>3</sup>D<text id="logo2">Workshop</txt></a>
+    <input type="text" name="search" placeholder="Search for works, authors, tags...">
+    <a href=""><img id="search_icon" src="{{URL::asset('/img/search_icon.png')}}" width="30"></a>
+    <a href="" class="navtxt">Logout</a>
+    <a href="" class="navtxt">---</a>
+    <a href="" class="navtxt">Home</a>
+</div>
