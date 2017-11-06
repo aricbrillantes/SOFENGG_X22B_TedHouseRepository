@@ -13,7 +13,7 @@ class PagesController extends Controller
     }
 
     public function about() {
-        // $title = 'About us';
+        $title = 'About us';
         // return view('pages.about', compact('title'));
         // return view('.about') -> with('title', $title);
     }
