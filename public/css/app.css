@@ -231,6 +231,12 @@ a#next:hover {
   text-decoration: underline;
 }
 
+div#no_found {
+  color: #95949e;
+  font-family: "Roboto";
+  margin-top: 100px;
+}
+
 /* cyrillic-ext */
 
 @font-face {
