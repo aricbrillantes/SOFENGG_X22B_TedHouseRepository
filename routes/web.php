@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'PagesController@index');
+Route::get('/notifs', 'PagesController@notifs');
+
 
 // Route::get('/about', 'PagesController@about');
 

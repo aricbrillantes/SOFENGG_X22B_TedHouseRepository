@@ -23,4 +23,10 @@ class PagesController extends Controller
         // return view('pages.index', compact('title'));
         return view('search.results') -> with('title', $title);
     }
+
+    public function notifs() {
+        $title = 'Notifications';
+        // return view('pages.index', compact('title'));
+        return view('menu.notifications') -> with('title', $title);
+    }
 }

@@ -1,9 +1,9 @@
 <!-- Temporary style page-->
 <style>
     body{
-	font-family: "Roboto Condensed";
-	position: relative;
-	min-height: 80%;
+        font-family: "Roboto Condensed";
+        position: relative;
+        min-height: 80%;
     }
 
     #jumbotron{

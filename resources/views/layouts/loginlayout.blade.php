@@ -10,10 +10,6 @@
     <body>
         @include('navigation.navbar')
 
-        {{--  @yield('content')  --}}
-
         @yield('content')
-
-        @yield('bottom');
     </body>
 </html>

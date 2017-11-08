@@ -8,6 +8,7 @@
         <a href="/" class="navtxt">Home</a>
     <!-- Add else if $userType == Admin here -->
     @else
+        <a href="/" class="navtxt">Home</a>
         <li id="dropdown">
             <a href="#" id="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                 {{ Auth::user()->name }} <span id="caret"></span>
@@ -24,6 +25,9 @@
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         {{ csrf_field() }}
                     </form>
+                </li>
+                <li>
+                    <a href="/notifs" class"navtxt">Notifications</a>
                 </li>
             </ul>
         </li>
