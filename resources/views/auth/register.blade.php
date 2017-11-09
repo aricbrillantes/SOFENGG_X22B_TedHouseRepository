@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.loginlayout')
+
+@include('tempstyle.loginstyle')
 
 @section('content')
 <div class="container">

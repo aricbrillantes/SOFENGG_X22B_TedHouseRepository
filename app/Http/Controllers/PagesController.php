@@ -29,4 +29,10 @@ class PagesController extends Controller
         // return view('pages.index', compact('title'));
         return view('menu.notifications') -> with('title', $title);
     }
+
+    public function works() {
+        $title = 'Works';
+        // return view('pages.index', compact('title'));
+        return view('menu.workpage') -> with('title', $title);
+    }
 }

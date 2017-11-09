@@ -30,7 +30,6 @@
     }
 
     #row{
-        display:-ms-flexbox;
         display:flex;
         -ms-flex-wrap:wrap;
         flex-wrap:wrap;
@@ -40,16 +39,16 @@
         position:relative;
         width:100%;
         min-height:1px;
-        -ms-flex:0 0 33.333333%;
-        flex:0 0 33.333333%;
-        max-width:33.333333%;
+        -ms-flex:0 0 70%;
+        flex:0 0 70%;
+        max-width:70%;
     }
 
     #jcontainer{
         width:100%;
         padding-right:15px;
-        padding-left:15px
-        ;margin-right:auto;
+        padding-left:15px;
+        margin-right:auto;
         margin-left:auto;
     }
     
@@ -124,5 +123,34 @@
 
     #small,small{
         font-size:80%;font-weight:400
+    }
+
+    #well{
+        Margin-left:4%;
+        min-height:20px;
+        width:25%;
+        transform:translate(0%,0%);
+        padding:20px;
+        margin-bottom:20px;
+        background-color:#f5f5f5;
+        border:1px solid #e3e3e3;
+        border-radius:4px;
+        -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.05);
+        box-shadow:inset 0 1px 1px rgba(0,0,0,.05);
+    }
+    
+    #well blockquote{
+        border-color:#ddd;
+        border-color:rgba(0,0,0,.15)
+    }
+    
+    #well-lg{
+        padding:24px;
+        border-radius:6px
+    }
+    
+    #well-sm{
+        padding:9px;
+        border-radius:3px
     }
 </style>

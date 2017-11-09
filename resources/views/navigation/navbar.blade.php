@@ -6,30 +6,17 @@
     @guest
         <a href="{{ route('login') }}"class="navtxt">Login</a>
         <a href="/" class="navtxt">Home</a>
-    <!-- Add else if $userType == Admin here -->
     @else
         <a href="/" class="navtxt">Home</a>
-        <li id="dropdown">
-            <a href="#" id="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                {{ Auth::user()->name }} <span id="caret"></span>
+            <a href="{{ route('logout') }}" class="navtxt"
+                onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                Logout
             </a>
 
-            <ul id="dropdown-menu">
-                <li>
-                    <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                        Logout
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        {{ csrf_field() }}
-                    </form>
-                </li>
-                <li>
-                    <a href="/notifs" class"navtxt">Notifications</a>
-                </li>
-            </ul>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
         </li>
     @endguest
 </div>
