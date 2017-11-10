@@ -17,9 +17,9 @@ class CreateWorksTable extends Migration
             $table->increments('id');
             $table->string('study'); // Name of study
             $table->string('author'); // Name of author
-            $table->timestamp('date_started')->nullable(); // date started (if finished)
-            $table->timestamp('date_released')->nullable(); // date released (if ongoing)
-            $table->timestamp('date_removed')->nullable(); // date removed (if unfinished)
+            $table->date('date_started')->nullable(); // date started (if finished)
+            $table->date('date_released')->nullable(); // date released (if ongoing)
+            $table->date('date_removed')->nullable(); // date removed (if unfinished)
             $table->enum('tag', []); //tags
             $table->timestamps();
         });
