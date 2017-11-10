@@ -237,6 +237,18 @@ div#no_found {
   margin-top: 100px;
 }
 
+body {
+  background-color: #ededed;
+  font-family: "Roboto Condensed";
+  position: relative;
+  min-height: 80%;
+}
+
+h1#jdisplay {
+  overflow: hidden;
+  text-shadow: 1px 1px #2ab27b;
+}
+
 /* cyrillic-ext */
 
 @font-face {

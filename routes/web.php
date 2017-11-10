@@ -12,7 +12,16 @@
 */
 
 Route::get('/', 'PagesController@index');
+Route::get('/notifs', 'PagesController@notifs');
+
 
 // Route::get('/about', 'PagesController@about');
 
 Route::get('/search', 'PagesController@search');
+//Route::get('/works', 'PagesController@works');
+
+
+Route::resource('works', 'WorkController');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
