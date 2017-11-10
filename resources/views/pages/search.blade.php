@@ -1,4 +1,4 @@
-@extends('layouts.common')
+@extends('layouts.app')
 
 @section('container')
     <!-- DIV FOR BODY -->
@@ -31,16 +31,4 @@
         </div>  --}}
         
     </div>
-@endsection
-
-@section('bottom')
-    <!-- PAGE NAVIGATION -->
-    {{--  <div id="bottom">
-        <a href="" id="prev">Prev</a>
-        <ul id="pages">
-            <li><a href="" id="a_page">1</a></li>
-            <li><a href="" id="a_page">2</a></li>
-        </ul>
-        <a href="" id="next">Next </a>
-    </div>  --}}
 @endsection

@@ -8,12 +8,6 @@
         <title>{{ $title }}</title>
     </head>
     <body>
-        @include('navigation.navbar')
-
-        {{--  @yield('content')  --}}
-
-        @yield('container')
-
-        @yield('bottom');
+        @include('inc.navbar')
     </body>
 </html>
