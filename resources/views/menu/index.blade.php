@@ -16,21 +16,6 @@
 @section('works')
     <div id="container">
         <!-- rows for example works -->
-            <div id ="well">
-                @if(count($works) > 0)
-                    @foreach($works as $w)
-                        <div id ="well">
-                            <div id="col">
-                                <h3><a href="/works/{{$w->id}}">{{$w->study}}</a></h3>
-                                <h4>{{$w->author}}</h4>
-                                <small>Tags: {{$w->tag}}</small><br>
-                                <small>{{$w->date_started}}</small>
-                            </div>
-                        </div>
-                    @endforeach   
-                @else   
-                    <p>No studies found</p>
-                @endif
-            </div>
+            
     </div>    
 @endsection

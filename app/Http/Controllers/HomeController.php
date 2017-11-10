@@ -23,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $title = 'Welcome to T3D Workhouse';
-        return view('menu.index') -> with('title', $title);
+        $title = 'T3D Workhouse';
+        return view('layouts.homepage') -> with('title', $title);
     }
 }

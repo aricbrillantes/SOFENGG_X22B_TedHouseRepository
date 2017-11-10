@@ -64,6 +64,14 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="occupation" class="col-md-4 control-label">Occupation</label>
+
+                            <div class="col-md-6">
+                                <input id="occupation" type="text" class="form-control" name="occupation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Register
