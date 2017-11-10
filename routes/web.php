@@ -12,5 +12,9 @@
 */
 
 Route::get('/', 'PagesController@index');
-
 Route::get('/search', 'PagesController@search');
+
+Route::resource('works', 'WorksController');
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

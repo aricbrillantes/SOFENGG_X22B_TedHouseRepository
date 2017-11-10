@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Work;
+use DB;
 
 class WorksController extends Controller
 {
@@ -13,7 +16,8 @@ class WorksController extends Controller
      */
     public function index()
     {
-        //
+        $works = Work::orderBy('created_at', 'asc')->paginate(10);
+        return view('works.index')->with('works', $works);
     }
 
     /**
@@ -23,7 +27,7 @@ class WorksController extends Controller
      */
     public function create()
     {
-        //
+        return view('works.create');
     }
 
     /**
