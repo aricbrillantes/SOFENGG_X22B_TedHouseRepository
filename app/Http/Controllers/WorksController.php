@@ -38,7 +38,45 @@ class WorksController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'study' => 'required',
+            'author' => 'required',
+            'abstract' => 'required',
+            'status' => 'required',
+            'document' => 'nullable|max:24999'
+        ]);
+
+        // Handle File Upload
+        if($request->hasFile('document')) {
+            // Get filename with extension
+            $filenameWithExt = $request->file('document')->getClientOriginalName();
+            
+            // Get filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            
+            // Get extension
+            $extension = $request->file('document')->getClientOriginalExtension();
+            
+            // Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            
+            // Upload image
+            $path = $request->file('document')->storeAs('public/documents', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'no-doc.png';
+        }
+
+        // Create work
+        $work = new Work();
+        $work->user_id = auth()->user()->id;
+        $work->study = $request->input('study');
+        $work->author = $request->input('author');
+        $work->status = $request->input('status');
+        $work->abstract = $request->input('abstract');
+        $work->document = $fileNameToStore;
+        $work->save();
+
+        return redirect('/works')->with('success', 'Work Created');
     }
 
     /**

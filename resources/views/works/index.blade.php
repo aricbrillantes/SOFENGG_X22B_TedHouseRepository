@@ -6,12 +6,16 @@
         @foreach($works as $work)
             <div class="well">
                 <div class="row">
-                    <!-- <div class="col-md-4 col-sm-4">
-                        <img style="wdith" src="/storage/cover_images/{{$post->cover_image}}">
-                    </div> -->
+                    <div class="col-md-4 col-sm-4">
+                        @if($work->document != 'no-doc.png')
+                            <img style="width: 50%" src="/storage/web_img/doc.png">
+                        @else
+                            <img style="width: 50%" src="/storage/web_img/no-doc.png">
+                        @endif
+                    </div>
                     <div class="col-md-8 col-sm-4">
                         <h3><a href="/works/{{$work->id}}">{{$work->study}}</a></h3>
-                        <small>Written on {{$work->created_at}} by {{$work->user->name}}</small>
+                        <small>Uploaded on {{$work->created_at}} by {{$work->user->name}}</small>
                     </div>
                 </div>
             </div>

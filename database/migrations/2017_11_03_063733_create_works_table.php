@@ -15,12 +15,16 @@ class CreateWorksTable extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
             $table->string('study'); // Name of study
             $table->string('author'); // Name of author
-            $table->date('date_started')->nullable(); // date started (if finished)
-            $table->date('date_released')->nullable(); // date released (if ongoing)
-            $table->date('date_removed')->nullable(); // date removed (if unfinished)
+            $table->string('status'); // Status of work
+            // $table->date('date_started')->nullable(); // date started (if finished)
+            // $table->date('date_released')->nullable(); // date released (if ongoing)
+            // $table->date('date_removed')->nullable(); // date removed (if unfinished)
             $table->enum('tag', []); //tags
+            $table->longText('abstract');
+            $table->string('document');
             $table->timestamps();
         });
     }

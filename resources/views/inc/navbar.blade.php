@@ -25,6 +25,7 @@
 
             <ul class="nav navbar-nav">
                 <li><a href="/">Home</a></li>
+                <li><a href="/works">Works</a></li>
                 <!-- <li><a href="/about">About us</a></li>
                 <li><a href="/services">Services</a></li>
                 <li><a href="/posts">Blog</a></li> -->
@@ -44,6 +45,7 @@
 
                         <ul class="dropdown-menu">
                             <li><a href="/dashboard">Dashboard</a></li>
+                            <li><a href="#">Settings</a></li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
