@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @php
+        $work->tag = explode(',', $work->tag);
+        $work->co_authors = explode(',', $work->co_authors);
+    @endphp
+
     <!-- POP UPS -->
     <div id="black"></div>
     
@@ -30,6 +35,9 @@
                     <td class="table_up1">Tags:</td>
                     <td>
                         <ul id="up_tags">
+                            @foreach($work->tag as $tag)
+                                <li>{{ $tag }}<button class='del_tag'>X</button></li>
+                            @endforeach
                         </ul>
                         <br>
                         <!-- NEW TAG -->
@@ -42,6 +50,9 @@
                     <td class="table_up1">Co-authors:</td>
                     <td>
                         <ul id="up_authors">
+                            @foreach($work->co_authors as $author)
+                                <li>{{ $author }}<button class='del_tag'>X</button></li>
+                            @endforeach
                         </ul>
                         <!-- ADD AUTHOR -->
                         {{Form::text('', '', ['name' => 'new_author', 'id' => 'new_author', 'class' => 'form-control', 'placeholder' => 'Add co-author...'])}}
@@ -91,9 +102,7 @@
         <!-- FILES TO DOWNLOAD -->
         <div class="div_files">
             <ul id="dl_filelist">
-                <li>File 1<button class="dl_indiv">Download</button></li>
-                <li>File 2<button class="dl_indiv">Download</button></li>
-                <li>File 3<button class="dl_indiv">Download</button></li>
+                <li>{{ $work->document }}<button class="dl_indiv">Download</button></li>    
             </ul>
         </div>
 
@@ -147,7 +156,9 @@
                     <h1 id="work_name">{{$work->study}}</h1>
                     <!-- AUTHORS -->
                     <ul id="list_authors">
-                        <li><a href="#" class="author">{{$work->user->name}}</a></li>
+                        @foreach($work->co_authors as $author)
+                            <li><a href="#" class="author">{{ $author }}</a></li>
+                        @endforeach
                     </ul>
                     <!-- DATE -->
                     <a id="work_date">{{$work->created_at}}</a>
@@ -155,16 +166,19 @@
                     <!-- TAGS -->
                     <text class="txt_tag">Tags: </text>
                     <ul id="list_tags">
-                        {{--  <li><a href="" class="a_tag">Really</a></li>
-                        <li><a href="" class="a_tag">Nice</a></li>
-                        <li><a href="" class="a_tag">Thesis</a></li>
-                        <li><a href="" class="a_tag">Cool</a></li>  --}}
+                        @foreach($work->tag as $tag)
+                            <li><a href="" class="a_tag">{{ $tag }}</a></li>
+                        @endforeach
                     </ul>
                     <br>
                     <!-- STATUS -->
-                    <a class="status" id="s_finished">{{$work->status}}</a>
-                    {{--  <a class="status" id="s_ongoing">ONGOING</a>
-                    <a class="status" id="s_unfin">DISCONTINUED</a>  --}}
+                    @if($work->status == 'Finished')
+				        <a class="status" id="s_finished">FINISHED</a>
+                    @elseif($work->status == 'Ongoing')
+                        <a class="status" id="s_ongoing">ONGOING</a>
+                    @else
+                        <a class="status" id="s_unfin">DISCONTINUED</a> 
+                    @endif
                     
                     <br>
                     <!-- BUTTONS -->

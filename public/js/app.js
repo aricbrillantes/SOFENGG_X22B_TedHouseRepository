@@ -1019,16 +1019,17 @@ $(document).ready(function () {
 
     $('#btn_addtag').click(function () {
         var tag_value = document.getElementById("new_tag").value;
-        $('#up_tags').append("<input type='text' name='" + tag + tagId + "' style='display: none' value='" + tag_value + "'><li>" + tag_value + "<button class='del_tag'>X</button></li>");
+        $('#up_tags').append("<input type='text' id='" + tag + tagId + "' name='" + tag + tagId + "' style='display: none' value='" + tag_value + "'><li>" + tag_value + "<button class='del_tag'>X</button></li>");
         document.getElementById("new_tag").value = "";
         tagId++;
     });
 
     $('#btn_addauthor').click(function () {
         var author_value = document.getElementById("new_author").value;
-        $('#up_authors').append("<input type='text' name='" + author + authorId + "' style='display: none' value='" + author_value + "'><li>" + author_value + "<button class='del_tag'>X</button></li>");
+        $('#up_authors').append("<li>" + author_value + "<button class='del_tag' type='button'>X</button><input type='text' id='" + author + authorId + "' name='" + author + authorId + "' style='display: none' value='" + author_value + "'></li>");
         document.getElementById("new_author").value = "";
         authorId++;
+        document.getElementById("num_authors").value = authorId;
     });
 
     $(document).on('click', '.del_tag', function () {
@@ -42882,7 +42883,7 @@ if (false) {
 /* 42 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: ModuleBuildError: Module build failed: \n}\n^\n      Invalid CSS after \"}\": expected \"}\", was \"\"\n      in /var/www/tedhouse.com/resources/assets/sass/_login.scss (line 1231, column 1)\n    at runLoaders (/var/www/tedhouse.com/node_modules/webpack/lib/NormalModule.js:195:19)\n    at /var/www/tedhouse.com/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /var/www/tedhouse.com/node_modules/loader-runner/lib/LoaderRunner.js:230:18\n    at context.callback (/var/www/tedhouse.com/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.asyncSassJobQueue.push [as callback] (/var/www/tedhouse.com/node_modules/sass-loader/lib/loader.js:55:13)\n    at Object.<anonymous> (/var/www/tedhouse.com/node_modules/async/dist/async.js:2244:31)\n    at Object.callback (/var/www/tedhouse.com/node_modules/async/dist/async.js:906:16)\n    at options.error (/var/www/tedhouse.com/node_modules/node-sass/lib/index.js:294:32)");
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

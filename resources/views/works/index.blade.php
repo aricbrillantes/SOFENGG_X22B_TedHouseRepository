@@ -21,13 +21,12 @@
 				<a href="/works/{{$work->id}}" id="s_name">{{$work->study}}</a><br>
 				<!-- AUTHORS -->
 				<ul id="list_authors">
-					<li><a href="#" class="author">{{$work->user->name}}</a></li>
-                    @php
+					@php
                         $work->co_authors = explode(',', $work->co_authors);
                     @endphp
 
                     @foreach($work->co_authors as $author)
-                        <li><a href="#" class="author">{{ $author }}</a></li>
+                        <li><a href="" class="author">{{ $author }}</a></li>
                     @endforeach
 				</ul>
 
@@ -53,23 +52,6 @@
                     @endforeach
 				</ul>
 			</div>
-			
-		
-            {{--  <div class="well">
-                <div class="row">
-                    <div class="col-md-4 col-sm-4">
-                        @if($work->document != 'no-doc.png')
-                            <img style="width: 50%" src="/storage/web_img/doc.png">
-                        @else
-                            <img style="width: 50%" src="/storage/web_img/no-doc.png">
-                        @endif
-                    </div>
-                    <div class="col-md-8 col-sm-4">
-                        <h3><a href="/works/{{$work->id}}">{{$work->study}}</a></h3>
-                        <small>Uploaded on {{$work->created_at}} by {{$work->user->name}}</small>
-                    </div>
-                </div>
-            </div>  --}}
         @endforeach
         {{$works->links()}}
     @else

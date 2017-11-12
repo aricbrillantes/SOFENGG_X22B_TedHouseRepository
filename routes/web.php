@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PagesController@index');
+Route::get('/{user}/profile', 'PagesController@user');
 Route::get('/search', 'PagesController@search');
 
 Route::resource('works', 'WorksController');

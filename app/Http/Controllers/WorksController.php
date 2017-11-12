@@ -157,7 +157,7 @@ class WorksController extends Controller
             $path = $request->file('document')->storeAs('public/documents', $fileNameToStore);
         }
 
-        // Create Work
+        // Update Work
         $work = Work::find($id);
         $work->study = $request->input('study');
         
@@ -168,19 +168,18 @@ class WorksController extends Controller
         }
 
         $work->co_authors = '';
-        $index = 1;
-        while($request->input('author_'.$index) !== NULL) {
-            $work->co_authors = $work->co_authors.$request->input('author_'.$index).',';
-            $index++;
+        for($i = 0; $i <= $request->input('num_authors'); $i++) {
+            if($request->input('author_'.$i) !== NULL)
+                $work->co_authors = $work->co_authors.$request->input('author_'.$i).',';
         }
         $work->co_authors = rtrim($work->co_authors,',');
 
-        $work->tag = '';
-        $index = 1;
-        while($request->input('tag_'.$index) !== NULL) {
-            $work->tag = $work->tag.$request->input('tag_'.$index).',';
-            $index++;
-        }
+        // $work->tag = '';
+        // for($i = 0; $i < $request->input('num_authors'); $i++) {
+        //     if($request->input('tag_'.$index) !== NULL)
+        //         $work->tag = $work->tag.$request->input('tag_'.$index).',';
+        // }
+        
         $work->tag = rtrim($work->tag,',');
 
         $work->abstract = $request->input('abstract');

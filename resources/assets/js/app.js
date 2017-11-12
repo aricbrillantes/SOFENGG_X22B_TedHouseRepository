@@ -48,20 +48,21 @@ $(document).ready(function () {
     
     $('#btn_addtag').click(function () {
          var tag_value = document.getElementById("new_tag").value;
-         $('#up_tags').append("<input type='text' name='" + tag + tagId + "' style='display: none' value='" + tag_value + "'><li>" + tag_value + "<button class='del_tag'>X</button></li>");
+         $('#up_tags').append("<input type='text' id='" + tag + tagId + "' name='" + tag + tagId + "' style='display: none' value='" + tag_value + "'><li>" + tag_value + "<button class='del_tag'>X</button></li>");
          document.getElementById("new_tag").value = "";
          tagId++;
     });
 
     $('#btn_addauthor').click(function () {
         var author_value = document.getElementById("new_author").value;
-        $('#up_authors').append("<input type='text' name='" + author + authorId + "' style='display: none' value='" + author_value + "'><li>" + author_value + "<button class='del_tag'>X</button></li>");
+        $('#up_authors').append("<li>" + author_value + "<button class='del_tag' type='button'>X</button><input type='text' id='" + author + authorId + "' name='" + author + authorId + "' style='display: none' value='" + author_value + "'></li>");
         document.getElementById("new_author").value = "";
         authorId++;
-   });
+        document.getElementById("num_authors").value = authorId;
+    });
 
     $(document).on('click','.del_tag', function () {
-         $(this).closest("li").remove();
+        $(this).closest("li").remove();
     });
 });
 
