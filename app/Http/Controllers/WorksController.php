@@ -40,7 +40,6 @@ class WorksController extends Controller
     {
         $this->validate($request, [
             'study' => 'required',
-            'author' => 'required',
             'abstract' => 'required',
             'status' => 'required',
             'document' => 'nullable|max:24999'
@@ -70,8 +69,30 @@ class WorksController extends Controller
         $work = new Work();
         $work->user_id = auth()->user()->id;
         $work->study = $request->input('study');
-        $work->author = $request->input('author');
-        $work->status = $request->input('status');
+        $work->author = auth()->user()->name;
+
+        switch($request->input('status')) {
+            case 0: $work->status = 'Finished'; break;
+            case 1: $work->status = 'Ongoing'; break;
+            default: $work->status = 'Discontinued';
+        }
+
+        $work->co_authors = '';
+        $index = 1;
+        while($request->input('author_'.$index) !== NULL) {
+            $work->co_authors = $work->co_authors.$request->input('author_'.$index).',';
+            $index++;
+        }
+        $work->co_authors = rtrim($work->co_authors,',');
+
+        $work->tag = '';
+        $index = 1;
+        while($request->input('tag_'.$index) !== NULL) {
+            $work->tag = $work->tag.$request->input('tag_'.$index).',';
+            $index++;
+        }
+        $work->tag = rtrim($work->tag,',');
+
         $work->abstract = $request->input('abstract');
         $work->document = $fileNameToStore;
         $work->save();
@@ -87,7 +108,8 @@ class WorksController extends Controller
      */
     public function show($id)
     {
-        //
+        $work = Work::find($id);
+        return view('works.show')->with('work', $work);
     }
 
     /**
@@ -110,7 +132,64 @@ class WorksController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'study' => 'required',
+            'abstract' => 'required',
+            'status' => 'required',
+            'document' => 'nullable|max:24999'
+        ]);
+
+        // Handle File Upload
+        if($request->hasFile('document')) {
+            // Get filename with extension
+            $filenameWithExt = $request->file('document')->getClientOriginalName();
+            
+            // Get filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            
+            // Get extension
+            $extension = $request->file('document')->getClientOriginalExtension();
+            
+            // Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            
+            // Upload image
+            $path = $request->file('document')->storeAs('public/documents', $fileNameToStore);
+        }
+
+        // Create Work
+        $work = Work::find($id);
+        $work->study = $request->input('study');
+        
+        switch($request->input('status')) {
+            case 0: $work->status = 'Finished'; break;
+            case 1: $work->status = 'Ongoing'; break;
+            default: $work->status = 'Discontinued';
+        }
+
+        $work->co_authors = '';
+        $index = 1;
+        while($request->input('author_'.$index) !== NULL) {
+            $work->co_authors = $work->co_authors.$request->input('author_'.$index).',';
+            $index++;
+        }
+        $work->co_authors = rtrim($work->co_authors,',');
+
+        $work->tag = '';
+        $index = 1;
+        while($request->input('tag_'.$index) !== NULL) {
+            $work->tag = $work->tag.$request->input('tag_'.$index).',';
+            $index++;
+        }
+        $work->tag = rtrim($work->tag,',');
+
+        $work->abstract = $request->input('abstract');
+        if($request->hasFile('document')) {
+            $work->document = $fileNameToStore;
+        }
+        $work->save();
+
+        return redirect('/works')->with('success', 'Work Updated');
     }
 
     /**
@@ -121,6 +200,19 @@ class WorksController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $work = Work::find($id);
+        
+        // Check for correct user
+        if(auth()->user()->id !== $work->user_id) {
+            return redirect('/works')->with('error', 'Unauthorized Page');
+        }
+
+        if($work->document != 'no-doc.png'){
+            // Delete document
+            Storage::delete('public/documents/'.$work->document);
+        }
+
+        $work->delete();
+        return redirect('/works')->with('success', 'Work Removed');
     }
 }

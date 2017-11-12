@@ -990,7 +990,147 @@ window.Vue = __webpack_require__(35);
 Vue.component('example', __webpack_require__(38));
 
 var app = new Vue({
-  el: '#app'
+    el: '#app'
+});
+
+// Upload File
+$('#btn_newfile').click(function () {
+    $('#img_upload').trigger('click');
+});
+
+$('#up_save').click(function () {
+    $('#submit_work').trigger('click');
+});
+
+$(function () {
+    $("#img_upload").change(function () {
+        var fileName = $(this).val();
+        fileName = fileName.split('\\').pop().split('/').pop();
+        document.getElementById("btn_newfile").innerHTML = fileName;
+    });
+});
+
+$(document).ready(function () {
+    var tag = "tag_";
+    var tagId = 1;
+
+    var author = "author_";
+    var authorId = 1;
+
+    $('#btn_addtag').click(function () {
+        var tag_value = document.getElementById("new_tag").value;
+        $('#up_tags').append("<input type='text' name='" + tag + tagId + "' style='display: none' value='" + tag_value + "'><li>" + tag_value + "<button class='del_tag'>X</button></li>");
+        document.getElementById("new_tag").value = "";
+        tagId++;
+    });
+
+    $('#btn_addauthor').click(function () {
+        var author_value = document.getElementById("new_author").value;
+        $('#up_authors').append("<input type='text' name='" + author + authorId + "' style='display: none' value='" + author_value + "'><li>" + author_value + "<button class='del_tag'>X</button></li>");
+        document.getElementById("new_author").value = "";
+        authorId++;
+    });
+
+    $(document).on('click', '.del_tag', function () {
+        $(this).closest("li").remove();
+    });
+});
+
+// View Work
+$(document).ready(function () {
+    $("#pop_update").hide();
+    $("#black").hide();
+    $("#pop_del").hide();
+    $("#pop_dl").hide();
+    $("#pop_rqdl").hide();
+    $("#pop_rqview").hide();
+    $("#poster").hide();
+
+    $("#btn_update").click(function () {
+        $("#pop_update").show();
+        $("#black").show();
+    });
+
+    $("#up_cancel").click(function () {
+        $("#pop_update").hide();
+        $("#black").hide();
+    });
+
+    $("#btn_delete").click(function () {
+        $("#pop_del").show();
+        $("#black").show();
+    });
+
+    $('#del_yes').click(function () {
+        $('#delete_work').trigger('click');
+    });
+
+    $("#del_cancel").click(function () {
+        $("#pop_del").hide();
+        $("#black").hide();
+    });
+
+    $("#btndl_member").click(function () {
+        $("#pop_dl").show();
+        $("#black").show();
+    });
+
+    $("#dl_cancel").click(function () {
+        $("#pop_dl").hide();
+        $("#black").hide();
+    });
+
+    $("#btndl_guest").click(function () {
+        $("#pop_rqdl").show();
+        $("#black").show();
+    });
+
+    $("#dl_rqcancel").click(function () {
+        $("#pop_rqdl").hide();
+        $("#black").hide();
+    });
+
+    $("#req_preview").click(function () {
+        $("#pop_rqview").show();
+        $("#black").show();
+    });
+
+    $("#view_vcancel").click(function () {
+        $("#pop_rqview").hide();
+        $("#black").hide();
+    });
+
+    $("#btn_poster").click(function () {
+        var btn = document.getElementById("btn_poster");
+        var btn2 = document.getElementById("btn_abstract");
+
+        if (btn.classList.contains('btn_deselect')) {
+            btn.classList.remove('btn_deselect');
+            btn.classList.toggle('btn_select');
+
+            btn2.classList.remove('btn_select');
+            btn2.classList.toggle('btn_deselect');
+
+            $("#abstract").hide();
+            $("#poster").show();
+        }
+    });
+
+    $("#btn_abstract").click(function () {
+        var btn = document.getElementById("btn_poster");
+        var btn2 = document.getElementById("btn_abstract");
+
+        if (btn2.classList.contains('btn_deselect')) {
+            btn2.classList.remove('btn_deselect');
+            btn2.classList.toggle('btn_select');
+
+            btn.classList.remove('btn_select');
+            btn.classList.toggle('btn_deselect');
+
+            $("#abstract").show();
+            $("#poster").hide();
+        }
+    });
 });
 
 /***/ }),
@@ -42742,7 +42882,7 @@ if (false) {
 /* 42 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: \n}\n^\n      Invalid CSS after \"}\": expected \"}\", was \"\"\n      in /var/www/tedhouse.com/resources/assets/sass/_login.scss (line 1231, column 1)\n    at runLoaders (/var/www/tedhouse.com/node_modules/webpack/lib/NormalModule.js:195:19)\n    at /var/www/tedhouse.com/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /var/www/tedhouse.com/node_modules/loader-runner/lib/LoaderRunner.js:230:18\n    at context.callback (/var/www/tedhouse.com/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.asyncSassJobQueue.push [as callback] (/var/www/tedhouse.com/node_modules/sass-loader/lib/loader.js:55:13)\n    at Object.<anonymous> (/var/www/tedhouse.com/node_modules/async/dist/async.js:2244:31)\n    at Object.callback (/var/www/tedhouse.com/node_modules/async/dist/async.js:906:16)\n    at options.error (/var/www/tedhouse.com/node_modules/node-sass/lib/index.js:294:32)");
 
 /***/ })
 /******/ ]);

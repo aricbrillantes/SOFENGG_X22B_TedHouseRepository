@@ -1,0 +1,228 @@
+body{
+	background-color: #ededed;
+	font-family: "Roboto", Verdana;
+}
+a{
+	text-decoration: none;
+}
+button:hover{
+	cursor: pointer;
+}
+h1, h2{
+	font-family: "Roboto Condensed", Tahoma;
+	margin: 20px 0px 15px 0px;
+	line-height: 33px;
+	color: #37363f;
+}
+
+/*NAVIGATION*/
+div.div_navigation{
+	font-family: "Roboto Condensed", Verdana;
+	padding: 0px 70px 0px 70px;
+	background-color: #303238;
+	text-align:center;
+	position: fixed;
+	right: 0;
+	left: 0;
+	top: 0;
+}
+a#username{
+	border-right: 1px solid #27292b;
+}
+a.logo{
+	font-family: "Raleway", Verdana;
+	font-weight: bold;
+	font-size: 25px;
+	margin-top: 0px;
+	padding: 5px;
+	float: left;
+	color: #fff;
+}
+text.logo2{
+	font-family: "Raleway Dots", Tahoma;
+	font-weight: 500;
+	color: #fff;
+}
+img.search_icon{
+	margin: 0px 0px -11px -5px;
+	background-color: #464951;
+	opacity: 0.5;
+	height: 32px;
+	width: 32px;
+}
+img.search_icon:hover{
+	opacity: 1;
+}
+.div_navigation input[type=text] {
+    font-family: "Roboto", Tahoma;
+    background-color: #464951;
+	margin-top: 7px;
+    color: #ced4e0;
+    width: 350px;
+    padding: 8px;
+    border: none;
+}
+.div_navigation input[type=text]:focus{
+	outline: none;
+}
+span.dropdown {
+	overflow: hidden;
+	float: right;
+}
+div.dropdown-content, div.notifs-content{
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);  
+    background-color: #f9f9f9;
+    position: absolute;
+    min-width: 130px;
+    display: none;
+    float: left;
+	right: 0;
+	overflow: auto;
+	max-height: 300px;
+}
+div.dropdown-content{
+	margin: 48px 70px 0px 0px;
+}
+div.notifs-content{
+	margin: 48px 120px 0px 0px;    
+}
+div.dropdown-content a, div.notifs-content a{
+    font-family: "Roboto", Verdana;
+    padding: 12px 16px;
+    text-align: right;
+    color: #303238;
+    display: block;
+}
+div.notifs-content a{
+	border-top: 1px solid #ddd;
+	font-size: 13px;
+}
+div.dropdown-content a:hover, div.notifs-content a:hover {
+    background-color: #ddd;
+}
+span.dropdown:hover .dropdown-content {
+    display: block;
+    color: #fff;
+}
+a.droparrow, a.navtxt, a.dropnotifs{
+	text-align: center;
+	margin-top: 10px;
+	font-size: 15px;
+	color: #ced4e0;
+	padding: 10px;
+	float: right;
+	height: 18px;
+}
+a.dropnotifs{
+	min-width: 30px;
+}
+a.dropnotifs:hover{
+	cursor: pointer;
+}
+a.droparrow{
+	border-left: 1px solid #27292b;
+	min-width: 30px;
+}
+.show{
+	display: block;
+}
+a.navtxt{
+	letter-spacing: 1px;
+	transition: 0.2s;
+	min-width: 60px;
+	}
+a.navtxt:hover, a.droparrow:hover, a.dropnotifs:hover{
+	background-color: #27292b;
+	color: #fff;
+}
+
+/*TABLE*/
+table{
+	line-height: 25px;
+	width: 100%;
+}
+
+/*BODY*/
+div#div_work{
+	margin: 100px 100px 100px 100px;
+	padding: 25px 60px 50px 60px;
+	background-color: #fff;
+}
+
+ul#up_tags{
+	margin-left: -25px;
+	list-style: none;
+	display: inline;
+	color: #b2b1bc;
+}
+ul#up_tags li{
+	display: inline;
+}
+
+hr.hr2{
+	border: 0.5px solid #b2b1bc;
+	margin-top: -10px;	
+}
+select#up_status{
+	font-family: "Roboto", Tahoma;
+	padding: 3px 10px;
+	font-size: 14px;
+}
+ul#up_tags, #up_authors{
+	font-family: "Roboto", Tahoma;
+	margin-left: -40px;
+	color: #37363f;
+	width: 100%;
+}
+ul#up_tags li, #up_authors li{
+	background-color: #ededed;
+	border: 1px solid #95949e;
+	display: inline-block;
+	border-radius: 5px;
+	margin-bottom: 5px;
+	padding: 0px 6px;
+	font-size: 13px;
+}
+button.del_tag{
+	background-color: inherit;
+	padding: 0px 0px 0px 6px;
+	font-weight: bold;
+	color: #95949e;
+	outline: none;
+	border: none;
+}
+td.table_up1{
+	vertical-align: top;
+	width: 100px;
+}
+table.up_table td{
+	padding-bottom: 20px;
+}
+#div_work input[type=text]{
+	font-family: "Roboto", Tahoma;
+	padding: 3px 10px;
+	font-size: 14px;
+	margin-top: 5px;
+}
+button.button_up{
+	font-family: "Roboto Condensed", Verdana;
+	text-decoration: none;
+	padding: 5px 10px;
+	font-size: 14px;
+	color: #fff;
+}
+button#btn_addtag, #btn_addauthor{
+	background-color: #331a6d;
+	border: none;
+}
+button#btn_newfile{
+	background-color: #331a6d;
+	border: 1px solid #331a6d;
+}
+button#up_save{
+	background-color: #44a300;
+	border: 1px solid #44a300;
+	padding: 6px 15px;
+	font-size: 16px;
+	float: right;
+}

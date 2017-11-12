@@ -1,5 +1,60 @@
 <!-- NAVIGATION BAR -->
-<nav class="navbar navbar-inverse">
+<div class="div_navigation">
+    <!-- LOGO -->
+    <a href="/" class="logo">TE<sup>3</sup>D<text class="logo2">Workshop</text></a>
+    <!-- SEARCH BAR -->
+    <input type="text" name="search" placeholder="Search for works, authors, tags...">
+    <a href="/"><img class="search_icon" src="/storage/web_img/search_icon.png" width="30"></a>
+
+    <!-- Authentication Links -->
+    <!-- BUTTONS FOR GUESTS -->
+    @guest
+    <a href="{{ route('login') }}" class="navtxt" id="top_guest">Log In</a>
+    
+    @else
+    <!-- BUTTONS FOR USERS -->
+    <span id="top_user">
+        
+        <!-- DROPDOWN 1 -->
+        <span class="dropdown">
+            <a class="droparrow"><i class="fa fa-caret-down"></i></a>
+            
+            <!-- CONTENT FOR MEMBERS -->
+            <div class="dropdown-content" id="dropdown_member">
+                <a href="/works/create">Upload Work</a>
+                <a href="#">Refer Invite</a>
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                </form>
+            </div>
+            <!-- CONTENT FOR ADMINS -->
+            {{--  <div class="dropdown-content" id="dropdown_admin">
+                <a href="/works/create">Upload Work</a>
+                <a href="">View Requests</a>
+                <a href="">View Members</a>
+                <a href="">Logout</a>
+            </div>	  --}}
+        </span>
+
+        <!-- NOTIFS DROPDOWN FOR ADMINS -->
+        {{--  <span class="dropdown" id="notifications">
+            <a class="dropnotifs" onclick="notif_dropdown()"><img onclick="notif_dropdown()" src="/storage/web_img/notifs_icon.png" height="18"></a>
+            <div class="notifs-content" id="notif-content">
+                <a href="">Kwaklaloo added a file to the work 'A Nice Reasearch Paper'</a>
+                <a href="">Juana De la Cruz deleted __'s work.</a>
+            </div>
+        </span>  --}}
+
+        <a href="/" class="navtxt">Home</a>
+        <a href="/" class="navtxt" id="username">{{ Auth::user()->name }}</a>
+    </span>
+    @endguest
+</div>
+{{--  <nav class="navbar navbar-inverse">
     <div class="container">
         <div class="navbar-header">
 
@@ -63,4 +118,4 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav>  --}}

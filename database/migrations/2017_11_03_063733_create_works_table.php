@@ -18,13 +18,11 @@ class CreateWorksTable extends Migration
             $table->integer('user_id');
             $table->string('study'); // Name of study
             $table->string('author'); // Name of author
+            $table->longText('co_authors')->nullable();
             $table->string('status'); // Status of work
-            // $table->date('date_started')->nullable(); // date started (if finished)
-            // $table->date('date_released')->nullable(); // date released (if ongoing)
-            // $table->date('date_removed')->nullable(); // date removed (if unfinished)
-            $table->enum('tag', []); //tags
+            $table->string('tag')->nullable(); //tags
             $table->longText('abstract');
-            $table->string('document');
+            $table->string('document')->nullable() ;
             $table->timestamps();
         });
     }
