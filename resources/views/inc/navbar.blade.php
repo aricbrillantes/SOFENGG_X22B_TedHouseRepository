@@ -3,8 +3,8 @@
     <!-- LOGO -->
     <a href="/" class="logo">TE<sup>3</sup>D<text class="logo2">Workshop</text></a>
     <!-- SEARCH BAR -->
-    <input type="text" name="search" placeholder="Search for works, authors, tags...">
-    <a href="/"><img class="search_icon" src="/storage/web_img/search_icon.png" width="30"></a>
+    <input type="text" name="search" id="search_content" placeholder="Search for works, authors, tags...">
+    <a href="#" id="search"><img class="search_icon" src="/storage/web_img/search_icon.png" width="30"></a>
 
     <!-- Authentication Links -->
     <!-- BUTTONS FOR GUESTS -->

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{config('app.name', 'TE3D Workshop')}}</title>
+    <title>{{ $title }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/imports.css') }}" rel="stylesheet">
@@ -25,7 +25,10 @@
         <link href="{{ asset('css/upload.css') }}" rel="stylesheet">
     @elseif(Route::current()->getName() === 'works.show')
         <link href="{{ asset('css/workpage.css') }}" rel="stylesheet">
+    @elseif(Request::is('search/*'))
+        <link href="{{ asset('css/results.css') }}" rel="stylesheet">
     @else
+        <link href="{{ asset('css/homepage.css') }}" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @endif
 

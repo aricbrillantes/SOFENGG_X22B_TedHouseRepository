@@ -10,14 +10,26 @@ use DB;
 class WorksController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        $title = 'Works';
         $works = Work::orderBy('created_at', 'asc')->paginate(10);
-        return view('works.index')->with('works', $works);
+
+        return view('works.index', compact('title'))->with('works', $works);
     }
 
     /**
@@ -27,7 +39,8 @@ class WorksController extends Controller
      */
     public function create()
     {
-        return view('works.create');
+        $title = 'Upload Work';
+        return view('works.create')->with('title', $title);
     }
 
     /**
@@ -97,7 +110,7 @@ class WorksController extends Controller
         $work->document = $fileNameToStore;
         $work->save();
 
-        return redirect('/works')->with('success', 'Work Created');
+        return redirect('/works');
     }
 
     /**
@@ -109,7 +122,10 @@ class WorksController extends Controller
     public function show($id)
     {
         $work = Work::find($id);
-        return view('works.show')->with('work', $work);
+        if($work === NULL)
+            return redirect('/works')->with('success', 'Work Created');
+        else
+            return view('works.show')->with('work', $work);
     }
 
     /**

@@ -41,7 +41,7 @@
                     <!-- ADD AUTHOR -->
                     {{Form::text('', '', ['name' => 'new_author', 'id' => 'new_author', 'class' => 'form-control', 'placeholder' => 'Add co-author...'])}}
                     {{Form::button('Add', ['class' => 'button_up', 'id' => 'btn_addauthor'])}}
-                    {{Form::text('num_authors', '', ['id' => 'num_authors'])}}
+                    {{Form::text('num_authors', '', ['id' => 'num_authors', 'style' => 'display: none'])}}
                 </td>
             </tr>
             <tr>

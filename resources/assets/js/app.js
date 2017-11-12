@@ -162,3 +162,18 @@ $(document).ready(function(){
         }
     });
 });
+
+// Search File
+$('#search').click(function(){
+    var search = document.getElementById("search_content").value;
+    if(search != '') {
+        var arr_search = search.split(' ').join('+');
+        window.location.href = '/search/' + arr_search;
+    } else {
+        window.location.href = '/works';
+    }
+});
+
+$('#btn_sort').click(function(){
+    var sort = document.getElementById("sort").value;
+});

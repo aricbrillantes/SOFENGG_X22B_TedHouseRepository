@@ -14,7 +14,30 @@
                         </div>
                     @endif
 
-                    You have not uploaded any works.
+                    <a href="/works/create" class="btn btn-primary">Create Work</a>
+                    <h3>Your Works</h3>
+                    @if(count($works) > 0)
+                        <table class="table table-striped">
+                            <tr>
+                                <td>Title</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            @foreach($works as $work)
+                                <tr>
+                                    <td><a href="/works/{{$work->id}}">{{$work->study}}</a></td>
+                                    <td>
+                                        {!! Form::open(['action' => ['WorksController@destroy', $work->id], 'method' => 'POST', 'class' => 'pull-right']) !!}
+                                        {{Form::hidden('_method', 'DELETE')}}
+                                        {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                                        {!! Form::close() !!}
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </table>
+                    @else
+                        <p>You have no works</p>
+                    @endif
                 </div>
             </div>
         </div>
