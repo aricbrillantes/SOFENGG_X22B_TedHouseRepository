@@ -3,7 +3,6 @@
 @section('content')
     @php
         $search_txt = implode(' ', $arr_search);
-        $sort = '';
     @endphp
 
     @if($result != '[]')
@@ -22,7 +21,7 @@
                     <option>Ongoing Works</option>
                     <option>Discontinued Works</option>
                 </select>
-                <button id="btn_sort" onclick="this.value">Go</button>
+                <button id="btn_sort">Go</button>
             </div>
 
             <!-- DIV FOR EACH RESULT -->

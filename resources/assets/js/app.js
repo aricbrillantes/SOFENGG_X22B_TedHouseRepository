@@ -175,5 +175,11 @@ $('#search').click(function(){
 });
 
 $('#btn_sort').click(function(){
+    var search = document.getElementById("key").innerHTML;
     var sort = document.getElementById("sort").value;
+
+    if(search != '') {
+        var arr_search = search.split(' ').join('+');
+        window.location.href = '/search/' + arr_search + '/' + sort;
+    }
 });

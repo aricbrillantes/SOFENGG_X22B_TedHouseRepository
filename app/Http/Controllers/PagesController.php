@@ -25,16 +25,56 @@ class PagesController extends Controller
         $title = 'Search Results for '.$title;
 
         $arr_search = explode('+', $arr_search);
+        $find = implode('+',$arr_search);
+        $find = str_replace('+', ' ', $find);
 
         // Perform the query using Query Builder
-        foreach($arr_search as $search) {
-            $result = DB::table('works')
-            ->select(DB::raw("*"))
-            ->where('study', 'LIKE', '%'.$search.'%')
-            ->get();
-        }
+        $result = DB::table('works')
+        ->select(DB::raw("*"))
+        ->where('study', 'LIKE', '%'.$find.'%')
+        ->get();
 
         // return $result;
         return view('pages.search', compact('arr_search', 'result')) -> with('title', $title);
+    }
+
+    public function sort(Request $request, $arr_search, $sort) {
+        $title = str_replace('+', ' ', $arr_search);
+        $title = 'Search Results for '.$title;
+
+        $arr_search = explode('+', $arr_search);
+        $find = implode('+',$arr_search);
+        $find = str_replace('+', ' ', $find);
+
+        // Perform the query using Query Builder
+        $result = DB::table('works')
+        ->select(DB::raw("*"))
+        ->where('study', 'LIKE', '%'.$find.'%')
+        ->get();
+
+        // return $result;
+        
+        $result = json_decode($result);
+
+        // usort($result, function($a, $b) { //Sort the array using a user defined function
+        //     return $a->$cmp < $b->$cmp ? -1 : 1;
+        // }); 
+        
+
+        usort($result, array($this, 'my_sort'));
+        function my_sort($a, $b)
+        {
+            if ($a->credits > $b->credits) {
+                return -1;
+            } else if ($a->credits < $b->credits) {
+                return 1;
+            } else {
+                return 0; 
+            }
+        }
+
+
+        return $result;
+        // return view('pages.search', compact('arr_search', 'result')) -> with('title', $title);
     }
 }

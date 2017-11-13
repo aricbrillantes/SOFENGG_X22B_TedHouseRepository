@@ -14,6 +14,7 @@
 Route::get('/', 'PagesController@index');
 Route::get('/{user}/profile', 'PagesController@user');
 Route::get('/search/{arr_search}', 'PagesController@search');
+Route::get('/search/{arr_search}/{sort}', 'PagesController@sort');
 
 Route::resource('works', 'WorksController');
 Auth::routes();
