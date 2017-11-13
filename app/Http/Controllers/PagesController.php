@@ -12,7 +12,7 @@ class PagesController extends Controller
     public function index() {
         $title = 'TE3D Workshop';
         $works = Work::orderBy('created_at', 'asc')->paginate(3);
-        return view('pages.index') -> with('works', $works);
+        return view('pages.index', compact('title')) -> with('works', $works);
     }
 
     public function user($user) {
@@ -34,7 +34,7 @@ class PagesController extends Controller
         ->where('study', 'LIKE', '%'.$find.'%')
         ->get();
 
-        // return $result;
+        $result = json_decode($result);
         return view('pages.search', compact('arr_search', 'result')) -> with('title', $title);
     }
 
@@ -52,29 +52,42 @@ class PagesController extends Controller
         ->where('study', 'LIKE', '%'.$find.'%')
         ->get();
 
-        // return $result;
-        
         $result = json_decode($result);
+        $arr_result = array();
 
-        // usort($result, function($a, $b) { //Sort the array using a user defined function
-        //     return $a->$cmp < $b->$cmp ? -1 : 1;
-        // }); 
-        
-
-        usort($result, array($this, 'my_sort'));
-        function my_sort($a, $b)
-        {
-            if ($a->credits > $b->credits) {
-                return -1;
-            } else if ($a->credits < $b->credits) {
-                return 1;
-            } else {
-                return 0; 
-            }
+        switch($sort) {
+            case 'Date': usort($result, function($a, $b) { return $a->created_at < $b->created_at ? -1 : 1; }); break;
+            case 'Name': usort($result, function($a, $b) { return $a->study < $b->study ? -1 : 1; });
+            default:
+                case 'Finished+Works':
+                foreach($result as $key) {
+                    if($key->status == 'Finished') {
+                        array_unshift($arr_result, $key);
+                    } else {
+                        array_push($arr_result, $key);
+                    }
+                } break;
+                case 'Ongoing+Works':
+                foreach($result as $key) {
+                    if($key->status == 'Ongoing') {
+                        array_unshift($arr_result, $key);
+                    } else {
+                        array_push($arr_result, $key);
+                    }
+                } break;
+                case 'Discontinued+Works':
+                foreach($result as $key) {
+                    if($key->status == 'Discontinued') {
+                        array_unshift($arr_result, $key);
+                    } else {
+                        array_push($arr_result, $key);
+                    }
+                }
         }
 
-
-        return $result;
-        // return view('pages.search', compact('arr_search', 'result')) -> with('title', $title);
+        if (!empty($arr_result))
+            $result = $arr_result;
+        
+        return view('pages.search', compact('arr_search', 'result')) -> with('title', $title);
     }
 }

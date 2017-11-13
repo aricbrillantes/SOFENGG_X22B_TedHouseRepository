@@ -1,20 +1,4 @@
-body{
-	background-color: #ededed;
-	font-family: "Roboto", Verdana;
-}
-a{
-	text-decoration: none;
-}
-button:hover{
-	cursor: pointer;
-}
-h1, h2{
-	font-family: "Roboto Condensed", Tahoma;
-	margin: 20px 0px 15px 0px;
-	line-height: 33px;
-	color: #37363f;
-}
-
+<style>
 /*NAVIGATION*/
 div.div_navigation{
 	font-family: "Roboto Condensed", Verdana;
@@ -25,7 +9,6 @@ div.div_navigation{
 	right: 0;
 	left: 0;
 	top: 0;
-	z-index: 15;
 }
 a#username{
 	border-right: 1px solid #27292b;
@@ -136,3 +119,131 @@ a.navtxt:hover, a.droparrow:hover, a.dropnotifs:hover{
 	background-color: #27292b;
 	color: #fff;
 }
+
+
+/*Page Styling for the profile page*/
+html, body, div, ol, ul, li{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  outline: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+	 overflow-y: scroll; 
+}
+body{
+	background-color: #ededed;
+	font-family: "Roboto", Verdana;
+}
+a{
+	text-decoration: none;
+}
+button:hover{
+	cursor: pointer;
+}
+h1, h2{
+	font-family: "Roboto Condensed", Tahoma;
+	margin: 20px 0px 15px 0px;
+	line-height: 33px;
+	color: #37363f;
+}
+
+strong { font-weight: bold; } 
+
+img { border: 0; max-width: 100%; }
+
+
+/** page structure for the profile page**/
+#profpage {
+  display: block;
+  width: 750px;
+  margin: 0 auto;
+  padding-top: 30px;
+  padding-bottom: 45px;
+}
+
+#content {
+  display: block;
+  width: 100%;
+  background: #fff;
+  padding: 25px 20px;
+  padding-bottom: 35px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+
+#userphoto {
+  display: block;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 8px;
+}
+#userphoto img {
+  display: block;
+  padding: 2px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+}
+
+.bio{
+    word-break: keep-all;
+}
+
+
+#profiletabs {
+  display: block;
+  margin-bottom: 4px;
+  height: 50px;
+}
+
+#profiletabs ul { list-style: none; display: block; width: 70%; height: 50px; }
+#profiletabls ul li { float: left; }
+#profiletabs ul li a { 
+  display: block;
+  float: left;
+  padding: 8px 11px;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: #303238;
+  color: #fff;
+  margin-right: 7px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+}
+#profiletabs ul li a:hover {
+  text-decoration: none;
+  background: #474961;
+  color: #fff;
+}
+
+#profiletabs ul li a.sel {
+  background: #464951;
+  border-color: #fff1;
+}
+
+.setting {
+  display: block;
+  font-weight: normal;
+  padding: 7px 3px;
+  border-top: 1px solid #d6d1af;
+  margin-bottom: 5px;
+}
+.setting span {
+  float: left; 
+  width: 250px;
+  font-weight: bold;
+}
+.setting span img { 
+  cursor: pointer;
+}
+
+</style>

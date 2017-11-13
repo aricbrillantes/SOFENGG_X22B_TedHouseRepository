@@ -20,36 +20,47 @@
             <a class="droparrow"><i class="fa fa-caret-down"></i></a>
             
             <!-- CONTENT FOR MEMBERS -->
-            <div class="dropdown-content" id="dropdown_member">
-                <a href="/works/create">Upload Work</a>
-                <a href="#">Refer Invite</a>
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    Logout
-                </a>
+            @if(Auth::user()->type == 'member')
+                <div class="dropdown-content" id="dropdown_member">
+                    <a href="/works/create">Upload Work</a>
+                    <a href="#">Refer Invite</a>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                </form>
-            </div>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                    </form>
+                </div>
+            @else
             <!-- CONTENT FOR ADMINS -->
-            {{--  <div class="dropdown-content" id="dropdown_admin">
-                <a href="/works/create">Upload Work</a>
-                <a href="">View Requests</a>
-                <a href="">View Members</a>
-                <a href="">Logout</a>
-            </div>	  --}}
+                <div class="dropdown-content" id="dropdown_admin">
+                    <a href="/works/create">Upload Work</a>
+                    <a href="">View Requests</a>
+                    <a href="">View Members</a>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                    </form>
+                </div>	
+            @endif
         </span>
 
         <!-- NOTIFS DROPDOWN FOR ADMINS -->
-        {{--  <span class="dropdown" id="notifications">
-            <a class="dropnotifs" onclick="notif_dropdown()"><img onclick="notif_dropdown()" src="/storage/web_img/notifs_icon.png" height="18"></a>
-            <div class="notifs-content" id="notif-content">
-                <a href="">Kwaklaloo added a file to the work 'A Nice Reasearch Paper'</a>
-                <a href="">Juana De la Cruz deleted __'s work.</a>
-            </div>
-        </span>  --}}
+        @if(Auth::user()->type == 'admin')
+            <span class="dropdown" id="notifications">
+                <a id="notif-click"  class="dropnotifs"><img class="dropnotifs" onclick="notif_dropdown()" src="/storage/web_img/notifs_icon.png" height="18"></a>
+                <div class="notifs-content" id="notifs-content">
+                    <a href="">Kwaklaloo added a file to the work 'A Nice Reasearch Paper'</a>
+                    {{--  <a href="">Juana De la Cruz deleted __'s work.</a>  --}}
+                </div>
+            </span>
+        @endif
 
-        <a href="/" class="navtxt">Home</a>
+        <a href="/dashboard" class="navtxt">Home</a>
         <a href="/{{ Auth::user()->name }}/profile" class="navtxt" id="username">{{ Auth::user()->name }}</a>
     </span>
     @endguest

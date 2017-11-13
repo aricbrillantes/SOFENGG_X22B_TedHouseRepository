@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ $title }}</title>
+    {{--  <title>{{ $title }}</title>  --}}
 
     <!-- Styles -->
     <link href="{{ asset('css/imports.css') }}" rel="stylesheet">

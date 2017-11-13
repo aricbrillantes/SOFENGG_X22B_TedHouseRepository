@@ -24,8 +24,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $title = 'TE3D Workshop';
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
-        return view('dashboard')->with('works',$user->works);;
+        return view('dashboard', compact('title'))->with('works',$user->works);;
     }
 }

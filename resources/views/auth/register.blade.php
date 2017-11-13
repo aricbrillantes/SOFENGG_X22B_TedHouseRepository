@@ -65,10 +65,23 @@
                             <label for="occupation" class="col-md-4 control-label">Occupation</label>
 
                             <div class="col-md-6">
-                                <select id="occupation" class="col-md-12 selectpicker" name="occupation">
-                                    <option>Student</option>
-                                    <option>Professor</option>
-                                </select>
+                                <input id="occupation" type="text" class="form-control" name="occupation" value="{{ old('occupation') }}" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type" class="col-md-4 control-label">Type</label>
+
+                            <div class="col-md-6">
+                                <input id="type" type="text" class="form-control" name="type" value="{{ old('type') }}" required autofocus>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bg_info" class="col-md-4 control-label">Background Info</label>
+
+                            <div class="col-md-6">
+                                {{Form::textarea('bg_info', '', ['id' => 'article-ckeditor', 'class' => 'form-control', 'placeholder' => 'Background Info'])}}
                             </div>
                         </div>
 

@@ -993,6 +993,30 @@ var app = new Vue({
     el: '#app'
 });
 
+// Notifications
+// function notif_dropdown(){
+//     var display = document.getElementById("notifs-content").style.display;
+
+//     if (display == "none")
+//         document.getElementById("notifs-content").style.display = "block";
+//     else
+//         document.getElementById("notifs-content").style.display = "none";
+// }
+
+// window.onclick = function(e) {
+//     var display = document.getElementById("notifs-content").style.display;
+
+//     if (e.target.matches('.dropnotifs')) {
+//         if(document.getElementById("notifs-content").style.display == "none")
+//             document.getElementById("notifs-content").style.display = "block";
+//         else
+//         document.getElementById("notifs-content").style.display = "none";
+//     } else {
+//         document.getElementById("notifs-content").style.display = "none";
+//     }
+// }
+
+
 // Upload File
 $('#btn_newfile').click(function () {
     $('#img_upload').trigger('click');
@@ -1148,7 +1172,7 @@ $('#search').click(function () {
 $('#btn_sort').click(function () {
     var search = document.getElementById("key").innerHTML;
     var sort = document.getElementById("sort").value;
-
+    sort = sort.split(' ').join('+');
     if (search != '') {
         var arr_search = search.split(' ').join('+');
         window.location.href = '/search/' + arr_search + '/' + sort;

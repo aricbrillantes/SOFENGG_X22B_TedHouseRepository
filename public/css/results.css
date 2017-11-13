@@ -266,3 +266,11 @@ button#btn_sort{
 	border: 1px solid #464951;
 	color: #fff;
 }
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block;
+}

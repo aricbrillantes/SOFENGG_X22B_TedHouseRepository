@@ -4,7 +4,7 @@
     <div id="con">
     @if(count($works) > 0)
         <h1 id="author_search">Works</h1>
-        <div class="div_sort">
+        {{--  <div class="div_sort">
             Sort By:
             <select id="sort">
                 <option>Date</option>
@@ -14,7 +14,7 @@
                 <option>Discontinued Works</option>
             </select>
             <button id="btn_sort">Go</button>
-        </div>
+        </div>  --}}
         @foreach($works as $work)
         <!-- DIV FOR EACH RESULT -->
 			<div id="result">

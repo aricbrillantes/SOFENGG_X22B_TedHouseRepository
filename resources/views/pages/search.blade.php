@@ -5,7 +5,7 @@
         $search_txt = implode(' ', $arr_search);
     @endphp
 
-    @if($result != '[]')
+    @if(!empty($result))
         <!-- DIV FOR BODY -->
         <div id="con">
             <!-- SEARCH RESULTS -->
@@ -27,7 +27,7 @@
             <!-- DIV FOR EACH RESULT -->
             @foreach($result as $key)
                 <div id="result">
-                    <a href="" id="s_name">{{ $key->study }}</a><br>
+                    <a href="/works/{{ $key->id }}" id="s_name">{{ $key->study }}</a><br>
                     <!-- AUTHORS -->
                     <ul id="list_authors">
                         @php

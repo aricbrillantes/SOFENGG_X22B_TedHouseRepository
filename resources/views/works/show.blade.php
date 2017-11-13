@@ -189,7 +189,7 @@
                     @endguest
                     
                     @if(!Auth::guest())
-                        @if(Auth::user()->id == $work->user_id)
+                        @if(Auth::user()->id == $work->user_id || Auth::user()->type == 'admin')
                             <button id="btn_update" class="button_work">Update</button><button id="btn_delete" class="button_work">Delete</button>
                         @endif
                     @endif
